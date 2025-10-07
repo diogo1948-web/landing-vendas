@@ -174,7 +174,181 @@
           font-size: 15px;
         }
       }
+
+      /* Terms Modal */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        backdrop-filter: blur(4px);
+        animation: fadeIn 0.3s ease;
+      }
+
+      .modal-overlay.active {
+        display: flex;
+      }
+
+      .modal-content {
+        background: white;
+        border-radius: 20px;
+        max-width: 700px;
+        width: 100%;
+        max-height: 85vh;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        border: 3px solid #dc2626;
+        animation: slideUp 0.3s ease;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .modal-header {
+        padding: 32px 40px;
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 3px solid #991b1b;
+      }
+
+      .modal-header h2 {
+        margin: 0;
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+      }
+
+      .modal-close {
+        background: rgba(255, 255, 255, 0.2);
+        border: 2px solid white;
+        color: white;
+        font-size: 32px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        line-height: 1;
+        padding: 0;
+      }
+
+      .modal-close:hover {
+        background: white;
+        color: #dc2626;
+        transform: rotate(90deg);
+      }
+
+      .modal-body {
+        padding: 40px;
+        overflow-y: auto;
+        flex: 1;
+      }
+
+      .modal-body h3 {
+        margin: 0 0 20px 0;
+        font-size: 24px;
+        font-weight: 700;
+        color: #1a1a1a;
+        padding-bottom: 12px;
+        border-bottom: 3px solid #dc2626;
+      }
+
+      .modal-body p {
+        margin: 0;
+        line-height: 1.8;
+        font-size: 16px;
+        color: #4a4a4a;
+        text-align: justify;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(30px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .modal-content {
+          max-width: 100%;
+          max-height: 90vh;
+          border-radius: 16px;
+        }
+
+        .modal-header {
+          padding: 24px;
+        }
+
+        .modal-header h2 {
+          font-size: 22px;
+        }
+
+        .modal-close {
+          width: 38px;
+          height: 38px;
+          font-size: 28px;
+        }
+
+        .modal-body {
+          padding: 24px;
+        }
+
+        .modal-body h3 {
+          font-size: 20px;
+          margin-bottom: 16px;
+        }
+
+        .modal-body p {
+          font-size: 15px;
+          line-height: 1.7;
+        }
+      }
     </style>
+    <script>
+      function openTermsModal(event) {
+        event.preventDefault();
+        document.getElementById('termsModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeTermsModal(event) {
+        event.preventDefault();
+        document.getElementById('termsModal').classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+
+      // Close modal on ESC key
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          closeTermsModal(event);
+        }
+      });
+    </script>
   </head>
 <body>
     <header class="header">
@@ -355,11 +529,13 @@
                             <div class="logo-prime">FORCE</div>
                         </div>
                         <p>Your private portal for Men's Force bonuses.</p>
+                        <p style="margin-top: 8px; font-size: 14px;">Contact: <a href="mailto:clientassistdesk@gmail.com" style="color: #dc2626; text-decoration: none; font-weight: 600;">clientassistdesk@gmail.com</a></p>
                     </div>
                     <div class="footer-section">
                         <h3>Account</h3>
                         <ul>
                             <li><a class="nav-link" href="logout.php">Logout</a></li>
+                            <li><a class="nav-link" href="#" onclick="openTermsModal(event)" style="cursor: pointer;">Terms and Information</a></li>
                         </ul>
                     </div>
                 </div>
@@ -368,6 +544,20 @@
                 </div>
             </div>
         </footer>
+
+        <!-- Terms Modal -->
+        <div id="termsModal" class="modal-overlay" onclick="closeTermsModal(event)">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <div class="modal-header">
+                    <h2>Terms and Information</h2>
+                    <button class="modal-close" onclick="closeTermsModal(event)">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <h3>Limitation of Liability</h3>
+                    <p>The products offered on this website are dietary supplements and should not be used as a substitute for a balanced diet or a healthy lifestyle. Results may vary significantly from person to person, depending on individual factors such as genetics, age, physical activity, diet, health conditions, among others. We do not guarantee specific results or concrete effects. The experiences shared by other users are individual testimonials and do not represent promises of effectiveness. These products are not intended to diagnose, treat, cure, or prevent any disease, nor should they be construed as medical treatments. They have also not been evaluated by the European Food Safety Authority (EFSA) or any other medical or governmental body. This website has no commercial relationship, sponsorship, or affiliation with Meta (Facebook, Instagram), TikTok, Google, or other platforms mentioned.</p>
+                </div>
+            </div>
+        </div>
     </main>
 </body>
 </html>
