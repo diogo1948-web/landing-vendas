@@ -328,6 +328,177 @@
           line-height: 1.7;
         }
       }
+
+      /* Label Information Section */
+      .label-info-section {
+        padding: 60px 20px;
+        background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .label-info-button {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        color: white;
+        border: none;
+        padding: 20px 48px;
+        border-radius: 16px;
+        font-size: 20px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 24px rgba(220, 38, 38, 0.3);
+        letter-spacing: 0.5px;
+      }
+
+      .label-info-button:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(220, 38, 38, 0.4);
+        background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
+      }
+
+      .label-info-button:active {
+        transform: translateY(-2px);
+      }
+
+      .label-info-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Label Modal Specific Styles */
+      .label-modal-content {
+        max-width: 800px;
+      }
+
+      .label-modal-body {
+        padding: 32px 40px;
+      }
+
+      .label-section {
+        margin-bottom: 28px;
+        padding-bottom: 24px;
+        border-bottom: 2px solid #f3f4f6;
+      }
+
+      .label-section:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .label-section p {
+        margin: 8px 0;
+        line-height: 1.7;
+        font-size: 15px;
+        color: #374151;
+      }
+
+      .label-section h4 {
+        margin: 0 0 12px 0;
+        font-size: 18px;
+        font-weight: 700;
+        color: #dc2626;
+      }
+
+      .ingredients-list,
+      .warning-list {
+        list-style: none;
+        padding: 0;
+        margin: 12px 0 0 0;
+      }
+
+      .ingredients-list li,
+      .warning-list li {
+        padding: 8px 0 8px 28px;
+        position: relative;
+        line-height: 1.6;
+        color: #374151;
+        font-size: 15px;
+      }
+
+      .ingredients-list li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #10b981;
+        font-weight: 700;
+        font-size: 18px;
+      }
+
+      .warning-list li:before {
+        content: "⚠";
+        position: absolute;
+        left: 0;
+        font-size: 16px;
+      }
+
+      .warning-section {
+        background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        padding: 20px;
+        border-radius: 12px;
+        border: 2px solid #f59e0b;
+        border-bottom: 2px solid #f59e0b;
+      }
+
+      .warning-section h4 {
+        color: #b45309;
+      }
+
+      .manufacturer-section {
+        background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+        padding: 20px;
+        border-radius: 12px;
+      }
+
+      .manufacturer-section p {
+        margin: 8px 0;
+      }
+
+      @media (max-width: 768px) {
+        .label-info-section {
+          padding: 40px 16px;
+        }
+
+        .label-info-button {
+          padding: 16px 32px;
+          font-size: 18px;
+          gap: 12px;
+        }
+
+        .label-info-icon svg {
+          width: 28px;
+          height: 28px;
+        }
+
+        .label-modal-body {
+          padding: 24px;
+        }
+
+        .label-section {
+          margin-bottom: 20px;
+          padding-bottom: 20px;
+        }
+
+        .label-section h4 {
+          font-size: 16px;
+        }
+
+        .label-section p {
+          font-size: 14px;
+        }
+
+        .ingredients-list li,
+        .warning-list li {
+          font-size: 14px;
+          padding-left: 24px;
+        }
+      }
     </style>
     <script>
       function openTermsModal(event) {
@@ -342,10 +513,23 @@
         document.body.style.overflow = 'auto';
       }
 
-      // Close modal on ESC key
+      function openLabelModal(event) {
+        event.preventDefault();
+        document.getElementById('labelModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLabelModal(event) {
+        event.preventDefault();
+        document.getElementById('labelModal').classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+
+      // Close modals on ESC key
       document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
           closeTermsModal(event);
+          closeLabelModal(event);
         }
       });
     </script>
@@ -519,6 +703,70 @@
                 </div>
             </div>
         </section>
+
+        <!-- Label Information Section -->
+        <section class="label-info-section">
+            <div class="container">
+                <button class="label-info-button" onclick="openLabelModal(event)">
+                    <div class="label-info-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="16" x2="12" y2="12"/>
+                            <line x1="12" y1="8" x2="12.01" y2="8"/>
+                        </svg>
+                    </div>
+                    <span>Label Information</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Label Modal -->
+        <div id="labelModal" class="modal-overlay" onclick="closeLabelModal(event)">
+            <div class="modal-content label-modal-content" onclick="event.stopPropagation()">
+                <div class="modal-header">
+                    <h2>Label Information</h2>
+                    <button class="modal-close" onclick="closeLabelModal(event)">&times;</button>
+                </div>
+                <div class="modal-body label-modal-body">
+                    <div class="label-section">
+                        <p><strong>30 vegetarian capsules</strong></p>
+                        <p>Dietary supplement</p>
+                        <p>Net quantity: 23.88 g</p>
+                    </div>
+
+                    <div class="label-section">
+                        <h4>Ingredients per daily dose (1 capsule):</h4>
+                        <ul class="ingredients-list">
+                            <li>Maca root extract (Lepidium meyenii) – 300 mg</li>
+                            <li>Tribulus terrestris extract (Tribulus terrestris) – 300 mg</li>
+                            <li>Ashwagandha root extract (Withania somnifera) – 100 mg</li>
+                            <li>Capsule composition – 100% hypromellose</li>
+                        </ul>
+                    </div>
+
+                    <div class="label-section">
+                        <h4>Directions for use:</h4>
+                        <p>Take 1 capsule daily with water</p>
+                    </div>
+
+                    <div class="label-section warning-section">
+                        <h4>Warning:</h4>
+                        <ul class="warning-list">
+                            <li>Do not exceed the recommended daily dose</li>
+                            <li>Do not use as a substitute for a varied diet</li>
+                            <li>Store at room temperature, out of reach of children</li>
+                        </ul>
+                    </div>
+
+                    <div class="label-section manufacturer-section">
+                        <p><strong>Batch:</strong> L0725 | <strong>Expiration date:</strong> July 31, 2027</p>
+                        <p><strong>Batch:</strong> L0825 | <strong>Expiration date:</strong> August 31, 2027</p>
+                        <p><strong>Reg. no.:</strong> П142407528</p>
+                        <p style="margin-top: 16px;"><strong>Manufactured by:</strong><br>Evelin 29 EOOD, Nikolaevsko shose 3, Radomir 2400, Bulgaria</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <footer class="footer">
             <div class="container">
