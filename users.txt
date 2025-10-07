@@ -1,0 +1,7 @@
+admin:changeme
+demo:demo123
+bonus:vip79
+
+# Add one username:password per line. Keep it simple (no colons in values).
+# You can edit this file directly to add/remove access.
+
