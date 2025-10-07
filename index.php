@@ -14,6 +14,166 @@
       .logo-force { color:#dc2626; font-weight:800; letter-spacing:2px; font-style:italic; margin-top:0; display:inline-block; }
       .hero-mens { color:#ffffff; display:inline-block; }
       .hero-force { color:#dc2626; display:inline-block; font-style: italic; }
+
+      /* Instructions Section */
+      .instructions-section {
+        padding: 60px 20px;
+        background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+      }
+
+      .instructions-box {
+        max-width: 960px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 24px;
+        padding: 48px 40px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        border: 3px solid #dc2626;
+        position: relative;
+      }
+
+      .instructions-badge {
+        display: inline-block;
+        background: #dc2626;
+        color: white;
+        padding: 10px 24px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+      }
+
+      .instructions-title {
+        font-size: 36px;
+        font-weight: 800;
+        color: #1a1a1a;
+        margin: 0 0 36px 0;
+        text-align: center;
+      }
+
+      .instruction-card {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        padding: 28px 32px;
+        border-radius: 16px;
+        margin-bottom: 20px;
+        border-left: 5px solid;
+        transition: transform 0.2s ease;
+      }
+
+      .instruction-card:hover {
+        transform: translateX(4px);
+      }
+
+      .instruction-card:last-child {
+        margin-bottom: 0;
+      }
+
+      .pink-card {
+        background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+        border-left-color: #ec4899;
+      }
+
+      .pink-card .instruction-icon {
+        color: #ec4899;
+      }
+
+      .blue-card {
+        background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+        border-left-color: #3b82f6;
+      }
+
+      .blue-card .instruction-icon {
+        color: #3b82f6;
+      }
+
+      .green-card {
+        background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        border-left-color: #10b981;
+      }
+
+      .green-card .instruction-icon {
+        color: #10b981;
+      }
+
+      .instruction-icon {
+        flex-shrink: 0;
+        width: 56px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .instruction-content {
+        flex: 1;
+      }
+
+      .instruction-content h3 {
+        font-size: 22px;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin: 0 0 8px 0;
+      }
+
+      .instruction-content p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #4a4a4a;
+        margin: 0;
+      }
+
+      .instruction-content p strong {
+        color: #dc2626;
+        font-weight: 700;
+      }
+
+      .instruction-content a {
+        color: #10b981;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .instruction-content a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        .instructions-section {
+          padding: 40px 16px;
+        }
+
+        .instructions-box {
+          padding: 32px 24px;
+          border-width: 2px;
+        }
+
+        .instructions-title {
+          font-size: 28px;
+          margin-bottom: 28px;
+        }
+
+        .instruction-card {
+          flex-direction: column;
+          padding: 24px;
+          gap: 16px;
+        }
+
+        .instruction-icon {
+          width: 48px;
+          height: 48px;
+        }
+
+        .instruction-content h3 {
+          font-size: 20px;
+        }
+
+        .instruction-content p {
+          font-size: 15px;
+        }
+      }
     </style>
   </head>
 <body>
@@ -56,6 +216,54 @@
                         <span class="hero-force">FORCE</span>
                     </h1>
                     <p class="hero-subtitle">Get access to all your bonuses.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Use Instructions -->
+        <section class="instructions-section">
+            <div class="container">
+                <div class="instructions-box">
+                    <div class="instructions-badge">IMPORTANT INSTRUCTIONS</div>
+                    <h2 class="instructions-title">How to Use Your Men's Force</h2>
+
+                    <div class="instruction-card pink-card">
+                        <div class="instruction-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <path d="M9 11h6M12 8v6"/>
+                            </svg>
+                        </div>
+                        <div class="instruction-content">
+                            <h3>Daily Dosage</h3>
+                            <p>Take <strong>1 capsule per day</strong> with water.</p>
+                        </div>
+                    </div>
+
+                    <div class="instruction-card blue-card">
+                        <div class="instruction-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <div class="instruction-content">
+                            <h3>Best Time</h3>
+                            <p>Take at <strong>the same time every day</strong> — choose a time that works for your schedule and stick to it for best results.</p>
+                        </div>
+                    </div>
+
+                    <div class="instruction-card green-card">
+                        <div class="instruction-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                        </div>
+                        <div class="instruction-content">
+                            <h3>Need Help?</h3>
+                            <p>For questions or support, please contact: <a href="mailto:clientassistdesk@gmail.com">clientassistdesk@gmail.com</a></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
